@@ -1,0 +1,95 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id           String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email        String   @unique
+  first_name   String
+  last_name    String
+  phone        String?
+  company_name String?
+  role         String   @default("student")
+  created_at   DateTime @default(now()) @db.Timestamptz
+
+  bookings     Booking[]
+  certificates Certificate[]
+
+  @@map("users")
+}
+
+model Course {
+  id             String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title          String
+  slug           String   @unique
+  description    String
+  duration_hours Int
+  price          Decimal  @db.Decimal(10, 2)
+  badge_label    String?
+  created_at     DateTime @default(now()) @db.Timestamptz
+
+  sessions       Session[]
+
+  @@map("courses")
+}
+
+model Session {
+  id            String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  course_id     String   @db.Uuid
+  date          DateTime @db.Date
+  start_time    DateTime @db.Time
+  end_time      DateTime @db.Time
+  venue_name    String
+  venue_address String
+  max_capacity  Int      @default(12)
+  is_active     Boolean  @default(true)
+  created_at    DateTime @default(now()) @db.Timestamptz
+
+  course        Course    @relation(fields: [course_id], references: [id])
+  bookings      Booking[]
+
+  @@map("sessions")
+}
+
+model Booking {
+  id                       String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id                  String    @db.Uuid
+  session_id               String    @db.Uuid
+  stripe_payment_intent_id String?   @unique
+  transaction_id           String?
+  payment_status           String    @default("pending")
+  attendance_status        String    @default("not_attended")
+  price_paid               Decimal   @db.Decimal(10, 2)
+  discount_code            String?
+  discount_amount          Decimal?  @db.Decimal(10, 2)
+  booked_at                DateTime  @default(now()) @db.Timestamptz
+  confirmed_at             DateTime? @db.Timestamptz
+
+  user        User         @relation(fields: [user_id], references: [id])
+  session     Session      @relation(fields: [session_id], references: [id])
+  certificate Certificate?
+
+  @@map("bookings")
+}
+
+model Certificate {
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  booking_id String   @unique @db.Uuid
+  user_id    String   @db.Uuid
+  issue_date DateTime @db.Date
+  expiry_date DateTime @db.Date
+  pdf_url    String?
+  is_expired Boolean  @default(false)
+  created_at DateTime @default(now()) @db.Timestamptz
+
+  booking    Booking  @relation(fields: [booking_id], references: [id])
+  user       User     @relation(fields: [user_id], references: [id])
+
+  @@map("certificates")
+}
