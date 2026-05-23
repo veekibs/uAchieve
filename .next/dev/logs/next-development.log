@@ -1,65 +1,24 @@
-{"timestamp":"00:00:05.484","source":"Server","level":"LOG","message":""}
-{"timestamp":"00:00:07.643","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:00:07.748","source":"Browser","level":"WARN","message":"Image with src \"http://localhost:3000/vercel.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio."}
-{"timestamp":"00:00:07.760","source":"Server","level":"WARN","message":"[browser] \"\\u001b[33mImage with src \\\"http://localhost:3000/vercel.svg\\\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \\\"auto\\\"' or 'height: \\\"auto\\\"' to maintain the aspect ratio.\\u001b[39m\""}
-{"timestamp":"00:00:07.760","source":"Browser","level":"WARN","message":"\u001b[33mImage with src \"http://localhost:3000/vercel.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.\u001b[39m"}
-{"timestamp":"00:00:42.308","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:00:42.356","source":"Server","level":"WARN","message":"[browser] \"\\u001b[33mImage with src \\\"http://localhost:3000/vercel.svg\\\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \\\"auto\\\"' or 'height: \\\"auto\\\"' to maintain the aspect ratio.\\u001b[39m\""}
-{"timestamp":"00:00:42.357","source":"Browser","level":"WARN","message":"\u001b[33mImage with src \"http://localhost:3000/vercel.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.\u001b[39m"}
-{"timestamp":"00:00:42.358","source":"Browser","level":"WARN","message":"Image with src \"http://localhost:3000/vercel.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio."}
-{"timestamp":"00:01:36.981","source":"Server","level":"LOG","message":"✓ Compiled in 5.5s"}
-{"timestamp":"00:01:40.396","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"01:10:00.423","source":"Server","level":"LOG","message":"✓ Compiled in 869ms"}
-{"timestamp":"01:11:30.625","source":"Server","level":"LOG","message":"✓ Compiled in 742ms"}
-{"timestamp":"01:39:16.330","source":"Server","level":"LOG","message":"✓ Compiled in 412ms"}
-{"timestamp":"01:39:16.739","source":"Server","level":"LOG","message":"✓ Compiled in 286ms"}
-{"timestamp":"01:40:24.319","source":"Server","level":"LOG","message":"✓ Compiled in 330ms"}
-{"timestamp":"01:40:24.601","source":"Server","level":"LOG","message":"✓ Compiled in 217ms"}
-{"timestamp":"01:40:25.453","source":"Server","level":"LOG","message":"✓ Compiled in 223ms"}
-{"timestamp":"01:40:30.512","source":"Server","level":"LOG","message":"✓ Compiled in 116ms"}
-{"timestamp":"01:40:30.880","source":"Server","level":"LOG","message":"✓ Compiled in 148ms"}
-{"timestamp":"01:40:35.746","source":"Server","level":"LOG","message":"✓ Compiled in 165ms"}
-{"timestamp":"01:40:35.993","source":"Server","level":"LOG","message":"✓ Compiled in 115ms"}
-{"timestamp":"01:40:36.230","source":"Server","level":"LOG","message":"✓ Compiled in 117ms"}
-{"timestamp":"01:40:36.947","source":"Server","level":"LOG","message":"✓ Compiled in 168ms"}
-{"timestamp":"01:40:37.597","source":"Server","level":"LOG","message":"✓ Compiled in 157ms"}
-{"timestamp":"01:40:37.895","source":"Server","level":"LOG","message":"✓ Compiled in 95ms"}
-{"timestamp":"01:40:38.092","source":"Server","level":"LOG","message":"✓ Compiled in 94ms"}
-{"timestamp":"01:40:38.411","source":"Server","level":"LOG","message":"✓ Compiled in 127ms"}
-{"timestamp":"01:40:39.898","source":"Server","level":"LOG","message":"✓ Compiled in 214ms"}
-{"timestamp":"01:40:40.484","source":"Server","level":"LOG","message":"✓ Compiled in 236ms"}
-{"timestamp":"01:40:40.964","source":"Server","level":"LOG","message":"✓ Compiled in 137ms"}
-{"timestamp":"01:40:41.247","source":"Server","level":"LOG","message":"✓ Compiled in 124ms"}
-{"timestamp":"01:40:41.631","source":"Server","level":"LOG","message":"✓ Compiled in 123ms"}
-{"timestamp":"01:40:42.045","source":"Server","level":"LOG","message":"✓ Compiled in 146ms"}
-{"timestamp":"01:40:42.497","source":"Server","level":"LOG","message":"✓ Compiled in 155ms"}
-{"timestamp":"01:40:42.847","source":"Server","level":"LOG","message":"✓ Compiled in 141ms"}
-{"timestamp":"01:40:43.143","source":"Server","level":"LOG","message":"✓ Compiled in 139ms"}
-{"timestamp":"01:40:43.631","source":"Server","level":"LOG","message":"✓ Compiled in 227ms"}
-{"timestamp":"01:40:44.077","source":"Server","level":"LOG","message":"✓ Compiled in 140ms"}
-{"timestamp":"01:40:44.332","source":"Server","level":"LOG","message":"✓ Compiled in 130ms"}
-{"timestamp":"01:40:44.679","source":"Server","level":"LOG","message":"✓ Compiled in 127ms"}
-{"timestamp":"01:40:44.953","source":"Server","level":"LOG","message":"✓ Compiled in 135ms"}
-{"timestamp":"01:40:45.361","source":"Server","level":"LOG","message":"✓ Compiled in 172ms"}
-{"timestamp":"01:40:45.697","source":"Server","level":"LOG","message":"✓ Compiled in 134ms"}
-{"timestamp":"01:40:46.010","source":"Server","level":"LOG","message":"✓ Compiled in 123ms"}
-{"timestamp":"01:40:46.611","source":"Server","level":"LOG","message":"✓ Compiled in 148ms"}
-{"timestamp":"01:40:46.860","source":"Server","level":"LOG","message":"✓ Compiled in 123ms"}
-{"timestamp":"01:40:47.128","source":"Server","level":"LOG","message":"✓ Compiled in 133ms"}
-{"timestamp":"01:40:47.483","source":"Server","level":"LOG","message":"✓ Compiled in 149ms"}
-{"timestamp":"01:40:47.894","source":"Server","level":"LOG","message":"✓ Compiled in 196ms"}
-{"timestamp":"01:40:48.449","source":"Server","level":"LOG","message":"✓ Compiled in 223ms"}
-{"timestamp":"01:40:49.346","source":"Server","level":"LOG","message":"✓ Compiled in 194ms"}
-{"timestamp":"01:40:50.045","source":"Server","level":"LOG","message":"✓ Compiled in 200ms"}
-{"timestamp":"01:40:50.666","source":"Server","level":"LOG","message":"✓ Compiled in 216ms"}
-{"timestamp":"01:40:51.028","source":"Server","level":"LOG","message":"✓ Compiled in 172ms"}
-{"timestamp":"01:40:51.446","source":"Server","level":"LOG","message":"✓ Compiled in 221ms"}
-{"timestamp":"01:40:51.848","source":"Server","level":"LOG","message":"✓ Compiled in 185ms"}
-{"timestamp":"01:40:52.198","source":"Server","level":"LOG","message":"✓ Compiled in 181ms"}
-{"timestamp":"01:40:52.764","source":"Server","level":"LOG","message":"✓ Compiled in 311ms"}
-{"timestamp":"01:40:53.110","source":"Server","level":"LOG","message":"✓ Compiled in 182ms"}
-{"timestamp":"01:40:53.559","source":"Server","level":"LOG","message":"✓ Compiled in 210ms"}
-{"timestamp":"01:40:53.881","source":"Server","level":"LOG","message":"✓ Compiled in 184ms"}
-{"timestamp":"01:40:54.481","source":"Server","level":"LOG","message":"✓ Compiled in 246ms"}
-{"timestamp":"01:40:54.913","source":"Server","level":"LOG","message":"✓ Compiled in 212ms"}
-{"timestamp":"01:40:55.340","source":"Server","level":"LOG","message":"✓ Compiled in 276ms"}
+{"timestamp":"00:00:07.259","source":"Server","level":"LOG","message":""}
+{"timestamp":"00:00:28.878","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:00:29.380","source":"Browser","level":"WARN","message":"Image with src \"https://images.unsplash.com/photo-1622115297822-a3798fdbe1f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes"}
+{"timestamp":"00:00:29.381","source":"Browser","level":"WARN","message":"Image with src \"https://images.unsplash.com/photo-1672025680762-689225c75594?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes"}
+{"timestamp":"00:00:29.381","source":"Browser","level":"WARN","message":"Image with src \"https://images.unsplash.com/photo-1622115585848-1d5b6e8af4e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes"}
+{"timestamp":"00:00:30.679","source":"Server","level":"WARN","message":"[browser] \"\\u001b[33mImage with src \\\"https://images.unsplash.com/photo-1622115297822-a3798fdbe1f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080\\\" has \\\"fill\\\" but is missing \\\"sizes\\\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes\\u001b[39m\""}
+{"timestamp":"00:00:30.680","source":"Browser","level":"WARN","message":"\u001b[33mImage with src \"https://images.unsplash.com/photo-1622115297822-a3798fdbe1f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes\u001b[39m"}
+{"timestamp":"00:00:30.682","source":"Server","level":"WARN","message":"[browser] \"\\u001b[33mImage with src \\\"https://images.unsplash.com/photo-1672025680762-689225c75594?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080\\\" has \\\"fill\\\" but is missing \\\"sizes\\\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes\\u001b[39m\""}
+{"timestamp":"00:00:30.683","source":"Browser","level":"WARN","message":"\u001b[33mImage with src \"https://images.unsplash.com/photo-1672025680762-689225c75594?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes\u001b[39m"}
+{"timestamp":"00:00:30.684","source":"Server","level":"WARN","message":"[browser] \"\\u001b[33mImage with src \\\"https://images.unsplash.com/photo-1622115585848-1d5b6e8af4e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080\\\" has \\\"fill\\\" but is missing \\\"sizes\\\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes\\u001b[39m\""}
+{"timestamp":"00:00:30.684","source":"Browser","level":"WARN","message":"\u001b[33mImage with src \"https://images.unsplash.com/photo-1622115585848-1d5b6e8af4e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes\u001b[39m"}
+{"timestamp":"00:01:27.254","source":"Browser","level":"WARN","message":"Image with src \"/images/faib.png\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes"}
+{"timestamp":"00:01:27.256","source":"Browser","level":"WARN","message":"Image with src \"/images/ofqual.png\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes"}
+{"timestamp":"00:01:27.256","source":"Browser","level":"WARN","message":"Image with src \"/images/rcuk.png\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes"}
+{"timestamp":"00:01:27.256","source":"Browser","level":"WARN","message":"Image with src \"/images/hse.png\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes"}
+{"timestamp":"00:01:35.510","source":"Server","level":"WARN","message":"[browser] \"\\u001b[33mImage with src \\\"/images/faib.png\\\" has \\\"fill\\\" but is missing \\\"sizes\\\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes\\u001b[39m\""}
+{"timestamp":"00:01:35.516","source":"Browser","level":"WARN","message":"\u001b[33mImage with src \"/images/faib.png\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes\u001b[39m"}
+{"timestamp":"00:01:35.517","source":"Server","level":"WARN","message":"[browser] \"\\u001b[33mImage with src \\\"/images/ofqual.png\\\" has \\\"fill\\\" but is missing \\\"sizes\\\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes\\u001b[39m\""}
+{"timestamp":"00:01:35.517","source":"Browser","level":"WARN","message":"\u001b[33mImage with src \"/images/ofqual.png\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes\u001b[39m"}
+{"timestamp":"00:01:35.518","source":"Server","level":"WARN","message":"[browser] \"\\u001b[33mImage with src \\\"/images/rcuk.png\\\" has \\\"fill\\\" but is missing \\\"sizes\\\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes\\u001b[39m\""}
+{"timestamp":"00:01:35.518","source":"Browser","level":"WARN","message":"\u001b[33mImage with src \"/images/rcuk.png\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes\u001b[39m"}
+{"timestamp":"00:01:35.518","source":"Server","level":"WARN","message":"[browser] \"\\u001b[33mImage with src \\\"/images/hse.png\\\" has \\\"fill\\\" but is missing \\\"sizes\\\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes\\u001b[39m\""}
+{"timestamp":"00:01:35.518","source":"Browser","level":"WARN","message":"\u001b[33mImage with src \"/images/hse.png\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes\u001b[39m"}
+{"timestamp":"00:06:08.947","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
