@@ -226,23 +226,57 @@ export default function AdminSessionRosterPage() {
           </div>
 
           <div className="bg-white rounded-3xl border border-gray-100 shadow-[0px_2px_8px_0px_rgba(0,0,0,0.04)] overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse min-w-[800px]">
+            <div className="overflow-x-auto w-full">
+              <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="bg-gray-50 border-b border-gray-100">
-                    <th className="p-5 text-xs uppercase tracking-wider font-bold text-slate-400">Student</th>
-                    <th className="p-5 text-xs uppercase tracking-wider font-bold text-slate-400">Contact Info</th>
-                    <th className="p-5 text-xs uppercase tracking-wider font-bold text-slate-400 text-right">Actions / Status</th>
+                  <tr className="bg-gray-50/80 border-b border-gray-100">
+                    <th className="py-4 px-6 text-xs uppercase tracking-wider font-bold text-slate-400 w-[40%]">Student & Type</th>
+                    <th className="py-4 px-6 text-xs uppercase tracking-wider font-bold text-slate-400 w-[30%]">Contact Info</th>
+                    <th className="py-4 px-6 text-xs uppercase tracking-wider font-bold text-slate-400 text-right w-[30%]">Actions / Status</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100">
-                  {selectedSession.bookings.length === 0 && ( <tr><td colSpan={3} className="p-8 text-center text-slate-500 font-medium">No students enrolled in this session yet.</td></tr> )}
+                  {selectedSession.bookings.length === 0 && ( 
+                    <tr>
+                      <td colSpan={3} className="p-8 text-center text-slate-500 font-medium">No students enrolled in this session yet.</td>
+                    </tr> 
+                  )}
                   {selectedSession.bookings.map((booking: any) => (
                     <tr key={booking.id} className="hover:bg-gray-50/50 transition-colors">
-                      <td className="p-5"><div className="font-bold text-slate-800 text-base">{booking.user.first_name} {booking.user.last_name}</div><div className="text-xs text-slate-400 font-mono mt-0.5">Ref: {booking.booking_reference}</div></td>
-                      <td className="p-5"><div className="flex flex-col gap-1.5 text-sm text-slate-600 font-medium"><span className="flex items-center gap-2"><Mail size={14} className="text-gray-400"/> {booking.user.email}</span>{booking.user.phone && <span className="flex items-center gap-2"><Phone size={14} className="text-gray-400"/> {booking.user.phone}</span>}</div></td>
-                      <td className="p-5 text-right">
-                        <div className="flex justify-end gap-2 items-center h-full">
+                      <td className="py-4 px-6">
+                        <div className="flex items-center gap-2 flex-wrap mb-1">
+                          <span className="font-bold text-slate-800 text-base">{booking.user.first_name} {booking.user.last_name}</span>
+                          {booking.course_type === 'refresher' ? (
+                            <span className="px-2 py-0.5 bg-sky-50 text-sky-700 border border-sky-200/80 text-[11px] font-bold rounded-md inline-flex items-center gap-1">
+                              🔄 Renewal
+                            </span>
+                          ) : (
+                            <span className="px-2 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-200/80 text-[11px] font-bold rounded-md inline-flex items-center gap-1">
+                              🌱 First Time
+                            </span>
+                          )}
+                        </div>
+                        {booking.user.company_name && (
+                          <div className="text-xs text-slate-500 font-medium mb-1">
+                            🏢 {booking.user.company_name}
+                          </div>
+                        )}
+                        <div className="text-xs text-slate-400 font-mono">Ref: {booking.booking_reference}</div>
+                      </td>
+                      <td className="py-4 px-6">
+                        <div className="flex flex-col gap-1 text-sm text-slate-600 font-medium">
+                          <span className="flex items-center gap-2 truncate">
+                            <Mail size={14} className="text-gray-400 shrink-0"/> {booking.user.email}
+                          </span>
+                          {booking.user.phone && (
+                            <span className="flex items-center gap-2 truncate">
+                              <Phone size={14} className="text-gray-400 shrink-0"/> {booking.user.phone}
+                            </span>
+                          )}
+                        </div>
+                      </td>
+                      <td className="py-4 px-6 text-right">
+                        <div className="flex justify-end gap-2 items-center flex-wrap">
                           {selectedSession.is_finalised ? (
                             <>
                               {booking.attendance_status === 'attended' && (
@@ -279,8 +313,8 @@ export default function AdminSessionRosterPage() {
                                 {/* Presence Control */}
                                 {booking.attendance_status === 'not_attended' && (
                                   <>
-                                    <button onClick={() => handleUpdateBooking(booking.id, { attendance_status: 'attended' })} className="px-3 py-2 bg-sky-500 text-white rounded-xl text-xs font-bold hover:bg-sky-600 active:scale-95 transition-all">Mark Attended</button>
-                                    <button onClick={() => handleUpdateBooking(booking.id, { attendance_status: 'noshow' })} className="px-3 py-2 bg-white border border-gray-200 text-slate-600 rounded-xl text-xs font-bold hover:bg-red-50 hover:text-red-500 hover:border-red-100 active:scale-95 transition-all">No Show</button>
+                                    <button onClick={() => handleUpdateBooking(booking.id, { attendance_status: 'attended' })} className="px-3 py-1.5 bg-sky-500 text-white rounded-xl text-xs font-bold hover:bg-sky-600 active:scale-95 transition-all">Mark Attended</button>
+                                    <button onClick={() => handleUpdateBooking(booking.id, { attendance_status: 'noshow' })} className="px-3 py-1.5 bg-white border border-gray-200 text-slate-600 rounded-xl text-xs font-bold hover:bg-red-50 hover:text-red-500 hover:border-red-100 active:scale-95 transition-all">No Show</button>
                                   </>
                                 )}
 
@@ -303,7 +337,7 @@ export default function AdminSessionRosterPage() {
                                       Completed
                                     </span>
                                   ) : (
-                                    <button onClick={() => handleUpdateBooking(booking.id, { is_completed: true })} className="px-3 py-2 bg-[#8DC63F] text-white rounded-xl text-xs font-bold hover:bg-[#7AB32E] active:scale-95 transition-all">Complete Training</button>
+                                    <button onClick={() => handleUpdateBooking(booking.id, { is_completed: true })} className="px-3 py-1.5 bg-[#8DC63F] text-white rounded-xl text-xs font-bold hover:bg-[#7AB32E] active:scale-95 transition-all">Complete Training</button>
                                   )
                                 )}
                               </>

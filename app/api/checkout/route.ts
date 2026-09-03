@@ -9,7 +9,7 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
     console.log("CHECKOUT_RECEIVED_BODY:", body);
-    const { firstName, surname, email, phone, companyName, sessionId, courseName, price, date, time, venue, slug, smsConsent } = body;
+    const { firstName, surname, email, phone, companyName, courseType, sessionId, courseName, price, date, time, venue, slug, smsConsent } = body;
 
     if (!sessionId) {
       return NextResponse.json({ error: "Session ID is required" }, { status: 400 });
@@ -62,6 +62,7 @@ export async function POST(req: Request) {
       payment_intent_data: {
         metadata: {
           sessionId: sessionId, // This attaches the ID directly to the Payment Intent
+          courseType: courseType || 'first-time',
         },
       },
       line_items: [{
@@ -80,10 +81,11 @@ export async function POST(req: Request) {
         sessionId: sessionId, 
         userEmail: email,
         courseName: courseName,
+        courseType: courseType || 'first-time',
         firstName: firstName,
         surname: surname,
         phone: phone,
-        companyName: companyName,
+        companyName: companyName || '',
         smsConsent: String(smsConsent === true || smsConsent === 'true'),
       },
     });

@@ -112,6 +112,7 @@ export async function POST(req: Request) {
           });
 
           const isSmsConsent = smsConsent === 'true';
+          const courseType = (metadata?.courseType as string) || 'first-time';
 
           return await tx.booking.create({
             data: {
@@ -122,6 +123,7 @@ export async function POST(req: Request) {
               stripe_payment_intent_id: session.payment_intent as string | undefined,
               payment_status: 'paid',
               price_paid: pricePaid,
+              course_type: courseType,
               sms_consent: isSmsConsent,
               booked_at: new Date(),
             },
@@ -246,6 +248,10 @@ export async function POST(req: Request) {
                   <tr>
                     <td style="padding: 6px 0; font-weight: bold; width: 140px;">Course:</td>
                     <td style="padding: 6px 0;">${courseTitle}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 6px 0; font-weight: bold;">Training Type:</td>
+                    <td style="padding: 6px 0;">${(createdBooking as any).course_type === 'refresher' ? 'Certificate Renewal / Refresher' : 'First-Time Training'}</td>
                   </tr>
                   <tr>
                     <td style="padding: 6px 0; font-weight: bold;">Booking Ref:</td>
