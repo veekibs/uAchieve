@@ -303,7 +303,16 @@ export default function Step1DetailsPage() {
           }),
         });
 
-        const data = await response.json();
+        let data: any = {};
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+          data = await response.json();
+        } else {
+          const rawText = await response.text();
+          console.error("Non-JSON response from /api/checkout:", rawText);
+          throw new Error('Unable to connect to the checkout service. Please check your connection and try again.');
+        }
+
         if (response.ok && data.url) {
           window.location.href = data.url;
         } else {
