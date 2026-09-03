@@ -21,7 +21,7 @@ export function Accreditations() {
           Training you can trust from industry-leading organizations
         </p>
 
-        <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8">
+        <div className="grid grid-cols-2 gap-6 md:flex md:flex-wrap justify-center items-center md:gap-8">
           {logos.map((logo, index) => (
             <motion.div
               key={index}
@@ -29,14 +29,14 @@ export function Accreditations() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="group bg-[#F8FAFB] rounded-[12px] border border-transparent w-[200px] h-[120px] transition-all duration-200 ease-out hover:border-[#29ABE2] hover:-translate-y-[2px] flex items-center justify-center"
+              className="group bg-[#F8FAFB] rounded-[12px] border border-transparent w-full max-w-[200px] h-[120px] transition-all duration-200 ease-out md:hover:border-[#29ABE2] md:hover:-translate-y-[2px] flex items-center justify-center"
             >
               <div className="relative w-[120px] h-[60px]">
                 <Image
                   src={logo.src}
                   alt={`${logo.name} logo`}
                   fill
-                  className="object-contain grayscale opacity-55 transition-all duration-200 ease-out group-hover:grayscale-0 group-hover:opacity-100"
+                  className="object-contain transition-all duration-200 ease-out md:grayscale md:opacity-55 md:group-hover:grayscale-0 md:group-hover:opacity-100"
                 />
               </div>
             </motion.div>

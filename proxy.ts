@@ -27,17 +27,61 @@ export async function proxy(request: NextRequest) {
 
   const { data: { user } } = await supabase.auth.getUser()
 
-  if (!user && request.nextUrl.pathname.startsWith('/profile')) {
-    return NextResponse.redirect(new URL('/login', request.url))
+  // Fetch user role for strict portal separation
+  let userRole = null
+  if (user) {
+    const { data: profile } = await supabase
+      .from('users')
+      .select('role')
+      .eq('id', user.id)
+      .maybeSingle()
+    userRole = profile?.role
   }
 
-  if (!user && request.nextUrl.pathname.startsWith('/admin')) {
-    return NextResponse.redirect(new URL('/login', request.url))
+  const pathname = request.nextUrl.pathname
+
+  // 1. Protect Student Profile (/profile and subpaths)
+  if (pathname.startsWith('/profile')) {
+    if (!user) {
+      return NextResponse.redirect(new URL('/userlogin', request.url))
+    }
+    
+    // Strict: Redirect admins away from the student portal
+    if (userRole === 'admin') {
+      return NextResponse.redirect(new URL('/admin', request.url))
+    }
+  }
+
+  // 2. Protect Admin Portal (/admin and subpaths)
+  if (pathname.startsWith('/admin')) {
+    if (!user) {
+      return NextResponse.redirect(new URL('/login', request.url))
+    }
+    
+    // Strict: Redirect non-admins away from the admin portal
+    if (userRole !== 'admin') {
+      return NextResponse.redirect(new URL('/profile', request.url))
+    }
+  }
+
+  // 3. Handle Admin Login Page (/login)
+  if (pathname === '/login') {
+    if (user && userRole === 'admin') {
+      return NextResponse.redirect(new URL('/admin', request.url))
+    }
+    return supabaseResponse
+  }
+
+  // 4. Handle Student Login Page (/userlogin)
+  if (pathname === '/userlogin' && user) {
+    if (userRole === 'admin') return NextResponse.redirect(new URL('/admin', request.url))
+    return NextResponse.redirect(new URL('/profile', request.url))
   }
 
   return supabaseResponse
 }
 
 export const config = {
-  matcher: ['/profile/:path*', '/admin/:path*'],
+  matcher: ['/profile', '/profile/:path*', '/admin', '/admin/:path*', '/login', '/userlogin'],
 }
+

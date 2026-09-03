@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 const courses = [
   {
     id: 1,
-    slug: "basic-life-support",
+    slug: "bls",
     title: "Basic Life Support",
     badge: "Beginner Friendly",
     description:
@@ -17,11 +17,11 @@ const courses = [
     classSize: "Max 12",
     price: "£85",
     image:
-      "https://images.unsplash.com/photo-1672025680762-689225c75594?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+      "https://images.unsplash.com/photo-1622115297822-a3798fdbe1f6?q=80&w=2148&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 2,
-    slug: "emergency-first-aid-at-work",
+    slug: "efaw",
     title: "Emergency First Aid at Work",
     badge: "HSE Approved",
     description:
@@ -30,7 +30,7 @@ const courses = [
     classSize: "Max 12",
     price: "£145",
     image:
-      "https://images.unsplash.com/photo-1622115585848-1d5b6e8af4e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+      "https://images.unsplash.com/photo-1600091474842-83bb9c05a723?q=80&w=2148&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];
 
@@ -40,33 +40,16 @@ export function Courses() {
 
   return (
     <section className="py-[120px] bg-[#F8FAFB] relative z-10">
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-6 w-full">
 
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-[32px] font-bold text-[#1A2E3B] tracking-tight mb-3">
+          <h2 className="text-[32px] font-bold text-[#1A2E3B] tracking-tight mb-3 font-['Plus Jakarta Sans']">
             Our Training Courses
           </h2>
-          <p className="text-[16px] text-[#4A5568]">
+          <p className="text-[16px] text-[#4A5568] font-['Plus Jakarta Sans']">
             Choose the right course for your needs
           </p>
-        </div>
-
-        {/* Filter Tabs */}
-        <div className="flex justify-center items-center gap-3 mb-20 flex-wrap">
-          {tabs.map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`px-6 py-2.5 rounded-full text-[15px] font-medium transition-all duration-300 ${
-                activeTab === tab
-                  ? "bg-[#29ABE2] text-white shadow-md"
-                  : "bg-transparent border border-gray-200 text-[#4A5568] hover:border-gray-300"
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
         </div>
 
         {/* Course Cards */}
@@ -92,10 +75,10 @@ export function Courses() {
                 {/* Available Badge */}
                 <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-[4px] rounded-full px-3 py-1.5 flex items-center gap-2 shadow-sm border border-white/40">
                   <div
-                    className="w-2 h-2 rounded-full bg-[#8DC63F] animate-pulse"
+                    className="size-2 rounded-full bg-[#8DC63F] animate-pulse"
                     style={{ animationDuration: "2s" }}
                   />
-                  <span className="text-[11px] font-bold text-[#1A2E3B] uppercase tracking-wider">
+                  <span className="text-[11px] font-bold text-[#1A2E3B] uppercase tracking-wider font-['Plus Jakarta Sans']">
                     Available
                   </span>
                 </div>
@@ -103,17 +86,17 @@ export function Courses() {
 
               {/* Card Content */}
               <div className="p-8 flex flex-col flex-1">
-                <h3 className="text-[20px] font-bold text-[#1A2E3B] mb-2 leading-tight">
+                <h3 className="text-[20px] font-bold text-[#1A2E3B] mb-2 leading-tight font-['Plus Jakarta Sans']">
                   {course.title}
                 </h3>
 
                 <div className="mb-4">
-                  <span className="inline-block px-3 py-1 bg-white border border-[#8DC63F]/40 text-[#1A2E3B] text-[12px] font-medium rounded-full shadow-sm">
+                  <span className="inline-block px-3 py-1 bg-white border border-[#8DC63F]/40 text-[#1A2E3B] text-[12px] font-medium rounded-full shadow-sm font-['Plus Jakarta Sans']">
                     {course.badge}
                   </span>
                 </div>
 
-                <p className="text-[#4A5568] text-[15px] leading-relaxed mb-8 flex-1">
+                <p className="text-[#4A5568] text-[15px] leading-relaxed mb-8 flex-1 font-['Plus Jakarta Sans']">
                   {course.description}
                 </p>
 
@@ -121,26 +104,26 @@ export function Courses() {
                 <div className="flex items-center justify-between pt-6 mb-8 relative">
                   <div className="absolute top-0 left-0 right-0 h-[1px] bg-gray-200/50" />
                   <div className="flex flex-col">
-                    <span className="text-[11px] uppercase tracking-[0.08em] text-[#9CA3AF] mb-1">
+                    <span className="text-[11px] uppercase tracking-[0.08em] text-[#9CA3AF] mb-1 font-['Plus Jakarta Sans']">
                       DURATION
                     </span>
-                    <span className="font-bold text-[#1A2E3B] text-[15px]">
+                    <span className="font-bold text-[#1A2E3B] text-[15px] font-['Plus Jakarta Sans']">
                       {course.duration}
                     </span>
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-[11px] uppercase tracking-[0.08em] text-[#9CA3AF] mb-1">
+                    <span className="text-[11px] uppercase tracking-[0.08em] text-[#9CA3AF] mb-1 font-['Plus Jakarta Sans']">
                       CLASS SIZE
                     </span>
-                    <span className="font-bold text-[#1A2E3B] text-[15px]">
+                    <span className="font-bold text-[#1A2E3B] text-[15px] font-['Plus Jakarta Sans']">
                       {course.classSize}
                     </span>
                   </div>
                   <div className="flex flex-col text-right">
-                    <span className="text-[11px] uppercase tracking-[0.08em] text-[#9CA3AF] mb-1">
+                    <span className="text-[11px] uppercase tracking-[0.08em] text-[#9CA3AF] mb-1 font-['Plus Jakarta Sans']">
                       PRICE
                     </span>
-                    <span className="font-bold text-[#1A2E3B] text-[15px]">
+                    <span className="font-bold text-[#1A2E3B] text-[15px] font-['Plus Jakarta Sans']">
                       {course.price}
                     </span>
                   </div>
@@ -148,7 +131,7 @@ export function Courses() {
 
                 <Link
                   href={`/courses/${course.slug}`}
-                  className="w-full bg-[#29ABE2] group-hover:bg-[#8DC63F] text-white text-[15px] font-medium h-[48px] rounded-[12px] transition-colors duration-300 shadow-sm flex items-center justify-center"
+                  className="w-full bg-[#29ABE2] group-hover:bg-[#8DC63F] text-white text-[15px] font-medium h-[48px] rounded-[12px] transition-colors duration-300 shadow-sm flex items-center justify-center font-['Plus Jakarta Sans']"
                 >
                   View Course Details
                 </Link>

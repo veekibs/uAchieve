@@ -32,6 +32,16 @@ model Course {
   duration_hours Int
   price          Decimal  @db.Decimal(10, 2)
   badge_label    String?
+  duration_text  String?
+  class_size     String?
+  accreditation  String?
+  training_type  String?
+  validity_text  String?
+  prerequisites  String?
+  overview       String?
+  learning_points String[]
+  faqs           Json?    // Stores array of { q: string, a: string }
+  cancellation_policy Json? // Stores array of { q: string, a: string, color: string }
   created_at     DateTime @default(now()) @db.Timestamptz
 
   sessions       Session[]
@@ -40,16 +50,19 @@ model Course {
 }
 
 model Session {
-  id            String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  course_id     String   @db.Uuid
-  date          DateTime @db.Date
-  start_time    DateTime @db.Time
-  end_time      DateTime @db.Time
-  venue_name    String
-  venue_address String
-  max_capacity  Int      @default(12)
-  is_active     Boolean  @default(true)
-  created_at    DateTime @default(now()) @db.Timestamptz
+  id                    String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  course_id             String   @db.Uuid
+  date                  DateTime @db.Date
+  start_time            DateTime @db.Time
+  end_time              DateTime @db.Time
+  venue_name            String
+  venue_address         String
+  max_capacity          Int      @default(12)
+  is_active             Boolean  @default(true)
+  is_finalised          Boolean  @default(false)
+  is_archived           Boolean  @default(false)
+  certificate_notified_at DateTime? @db.Timestamptz
+  created_at            DateTime @default(now()) @db.Timestamptz
 
   course        Course    @relation(fields: [course_id], references: [id])
   bookings      Booking[]
@@ -57,19 +70,61 @@ model Session {
   @@map("sessions")
 }
 
+model DiscountCode {
+  id              String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  code            String    @unique
+  discount_type   String    // "percentage" or "fixed"
+  discount_value  Decimal   @db.Decimal(10, 2)
+  is_active       Boolean   @default(true)
+  expires_at      DateTime? @db.Timestamptz
+  usage_limit     Int?
+  usage_count     Int       @default(0)
+  created_at      DateTime  @default(now()) @db.Timestamptz
+
+  @@map("discount_codes")
+}
+
 model Booking {
   id                       String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   user_id                  String    @db.Uuid
   session_id               String    @db.Uuid
+  booking_reference        String    @unique
+  stripe_checkout_session_id String? @unique
   stripe_payment_intent_id String?   @unique
   transaction_id           String?
   payment_status           String    @default("pending")
   attendance_status        String    @default("not_attended")
+  is_completed             Boolean   @default(false)
   price_paid               Decimal   @db.Decimal(10, 2)
   discount_code            String?
   discount_amount          Decimal?  @db.Decimal(10, 2)
   booked_at                DateTime  @default(now()) @db.Timestamptz
   confirmed_at             DateTime? @db.Timestamptz
+
+  status                   String    @default("confirmed")
+  cancellation_reason      String?
+  cancelled_at             DateTime? @db.Timestamptz
+
+  refund_status            String    @default("none")
+  refund_amount            Decimal?  @db.Decimal(10, 2)
+  refunded_at              DateTime? @db.Timestamptz
+
+  rebook_eligible          Boolean   @default(false)
+  rebook_used              Boolean   @default(false)
+  rebooked_to_booking_id   String?   @db.Uuid
+
+  choice_token             String?   @unique
+  choice_token_expires_at  DateTime? @db.Timestamptz
+  choice_token_used_at     DateTime? @db.Timestamptz
+
+  rebook_token             String?   @unique
+  rebook_token_expires_at  DateTime? @db.Timestamptz
+  rebook_token_used_at     DateTime? @db.Timestamptz
+
+  week_reminder_sent_at   DateTime? @db.Timestamptz
+  day_reminder_sent_at    DateTime? @db.Timestamptz
+
+  sms_consent             Boolean   @default(false)
 
   user        User         @relation(fields: [user_id], references: [id])
   session     Session      @relation(fields: [session_id], references: [id])

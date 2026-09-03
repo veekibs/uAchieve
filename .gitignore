@@ -1,2 +1,39 @@
-node_modules
-git pull origin main --rebase
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# testing & reports
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# next.js build output
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+.env
+.env.test
+
+# vercel
+.vercel
+
+# typescript build cache
+*.tsbuildinfo
+next-env.d.ts

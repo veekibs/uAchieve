@@ -30,12 +30,12 @@ const features = [
 export function Features() {
   return (
     <section className="py-[120px] bg-[#F8FAFB]">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6 w-full">
         <div className="text-center mb-16">
-          <h2 className="text-[32px] font-bold text-[#1A2E3B] tracking-tight mb-3">
+          <h2 className="text-[32px] font-bold text-[#1A2E3B] tracking-tight mb-3 font-['Plus Jakarta Sans']">
             Why Choose UAchieve?
           </h2>
-          <p className="text-[16px] text-[#4A5568]">
+          <p className="text-[16px] text-[#4A5568] font-['Plus Jakarta Sans']">
             Trusted first aid training with proven results
           </p>
         </div>
@@ -50,15 +50,15 @@ export function Features() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.15 }}
-                className="group bg-white rounded-[16px] p-8 shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-[#F0F4F8] border-l-[3px] border-l-[#F0F4F8] transition-all duration-300 hover:-translate-y-1 hover:border-l-[#8DC63F]"
+                className="group bg-white rounded-[16px] p-8 shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-[#F0F4F8] border-l-[3px] border-l-[#F0F4F8] transition-all duration-300 hover:-translate-y-1 hover:border-l-[#8DC63F] font-['Plus Jakarta Sans']"
               >
                 <div className="w-[48px] h-[48px] bg-[#29ABE2] group-hover:bg-[#8DC63F] rounded-[12px] flex items-center justify-center mb-6 transition-colors duration-300">
                   <Icon size={24} className="text-white" />
                 </div>
-                <h3 className="text-[18px] font-bold text-[#1A2E3B] mb-3">
+                <h3 className="text-[18px] font-bold text-[#1A2E3B] mb-3 font-['Plus Jakarta Sans']">
                   {feature.title}
                 </h3>
-                <p className="text-[#4A5568] text-[15px] leading-relaxed">
+                <p className="text-[#4A5568] text-[15px] leading-relaxed font-['Plus Jakarta Sans']">
                   {feature.description}
                 </p>
               </motion.div>
