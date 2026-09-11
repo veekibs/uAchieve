@@ -2,8 +2,6 @@ import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import prisma from '@/lib/prisma/client';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
@@ -12,6 +10,9 @@ export async function GET(req: Request) {
     if (!sessionId) {
       return NextResponse.json({ error: 'Missing session_id' }, { status: 400 });
     }
+
+    const stripeKey = process.env.STRIPE_SECRET_KEY;
+    const stripe = stripeKey ? new Stripe(stripeKey) : null;
 
     // 1. Query database for confirmed booking by stripe checkout session ID
     const booking = await prisma.booking.findUnique({

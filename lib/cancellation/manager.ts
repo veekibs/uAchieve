@@ -11,7 +11,13 @@ import {
   sendAdminCancellation14DaysNoticeEmail
 } from '@/lib/email/sender';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+function getStripe() {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) {
+    throw new Error('Missing STRIPE_SECRET_KEY in environment variables');
+  }
+  return new Stripe(key);
+}
 
 /**
  * Branch 1 & Branch 2: Student Cancels Booking
@@ -33,6 +39,7 @@ export async function processStudentCancellation(bookingId: string) {
   if (diffInDays >= 14) {
     // Branch 1: Student cancels 14+ days before session -> Full Stripe Refund
     if (booking.stripe_payment_intent_id) {
+      const stripe = getStripe();
       await stripe.refunds.create({
         payment_intent: booking.stripe_payment_intent_id
       });

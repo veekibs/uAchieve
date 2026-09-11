@@ -5,8 +5,6 @@ import { Resend } from 'resend';
 import { formatTimeString } from '@/lib/time';
 import { sendCapacityExceededEmail, sendAdminRefundAlertEmail } from '@/lib/email/sender';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-
 export async function POST(req: Request) {
   try {
     const body = await req.text();
@@ -17,13 +15,20 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'No signature found' }, { status: 400 });
     }
 
+    if (!process.env.STRIPE_SECRET_KEY || !process.env.STRIPE_WEBHOOK_SECRET) {
+      console.error('Stripe webhook error: Missing STRIPE_SECRET_KEY or STRIPE_WEBHOOK_SECRET');
+      return NextResponse.json({ error: 'Stripe configuration missing' }, { status: 500 });
+    }
+
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
     let event: Stripe.Event;
 
     try {
       event = stripe.webhooks.constructEvent(
         body,
         signature,
-        process.env.STRIPE_WEBHOOK_SECRET!
+        process.env.STRIPE_WEBHOOK_SECRET
       );
     } catch (err: any) {
       console.error(`Stripe webhook signature verification failed: ${err.message}`);

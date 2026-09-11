@@ -4,8 +4,6 @@ import prisma from '@/lib/prisma/client';
 import { validateBookingToken, generateBookingToken } from '@/lib/tokens';
 import { sendRebookInviteEmail } from '@/lib/email/sender';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
@@ -62,9 +60,12 @@ export async function GET(req: Request) {
 
     if (action === 'refund') {
       if (booking.stripe_payment_intent_id) {
-        await stripe.refunds.create({
-          payment_intent: booking.stripe_payment_intent_id,
-        });
+        if (process.env.STRIPE_SECRET_KEY) {
+          const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+          await stripe.refunds.create({
+            payment_intent: booking.stripe_payment_intent_id,
+          });
+        }
       }
 
       await prisma.booking.update({
