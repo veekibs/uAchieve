@@ -28,14 +28,26 @@ export async function proxy(request: NextRequest) {
   const { data: { user } } = await supabase.auth.getUser()
 
   // Fetch user role for strict portal separation
-  let userRole = null
+  let userRole: string | null = null
   if (user) {
-    const { data: profile } = await supabase
-      .from('users')
-      .select('role')
-      .eq('id', user.id)
-      .maybeSingle()
-    userRole = profile?.role
+    userRole = user.user_metadata?.role || null
+
+    if (!userRole) {
+      const emailLower = user.email?.toLowerCase().trim() || ''
+      const { data: profile } = await supabase
+        .from('users')
+        .select('role')
+        .or(`id.eq.${user.id},email.eq.${emailLower}`)
+        .maybeSingle()
+      userRole = profile?.role || null
+    }
+
+    if (!userRole && user.email) {
+      const emailLower = user.email.toLowerCase().trim()
+      if (emailLower === 'uachieve@gmail.com' || emailLower === 'kibaaraeve@gmail.com' || emailLower === 'veekibs@gmail.com') {
+        userRole = 'admin'
+      }
+    }
   }
 
   const pathname = request.nextUrl.pathname
